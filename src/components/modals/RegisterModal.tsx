@@ -7,6 +7,9 @@ import { FcGoogle } from "react-icons/fc";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import useRegisterModal from "@/hooks/useRegisterModal";
 import Modal from "./Modal";
+import Heading from "../Heading";
+import { APP_NAME } from "@/constants/textContent";
+import Input from "../inputs/input";
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
@@ -39,6 +42,36 @@ const RegisterModal = () => {
         setIsLoading(false);
       });
   };
+
+  const bodyContent = (
+    <div className="flex flex-col gap-4">
+      <Heading title={`Welcome to ${APP_NAME}`} subtitle="Create an account!" />
+      <Input
+        id="email"
+        label="Email"
+        disabled={isLoading}
+        register={register}
+        errors={errors}
+        required
+      />
+      <Input
+        id="email"
+        label="Email"
+        disabled={isLoading}
+        register={register}
+        errors={errors}
+        required
+      />{" "}
+      <Input
+        id="email"
+        label="Email"
+        disabled={isLoading}
+        register={register}
+        errors={errors}
+        required
+      />
+    </div>
+  );
   return (
     <Modal
       disabled={isLoading}
@@ -47,6 +80,7 @@ const RegisterModal = () => {
       actionLabel="Continue"
       onClose={registerModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
+      body={bodyContent}
     />
   );
 };
